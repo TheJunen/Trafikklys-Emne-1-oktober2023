@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .trafficlight{
+            border: 2px solid;
+            height: 350px;
+            width: 190px;
+            position: relative;
+            left: 580px;
+            background-color: gray;
+        }
+        .blank{
+            border: 1px solid;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            margin: 10px;
+            position: relative;
+            left: 35px;
+        }
+        .buttonPlacement{
+            position: relative;
+            left: 470px;
+            top: 10px
+        }
+        
+        
+    </style>
+</head>
+<body onload="automaticTrafficlight()">
+    <div id="app"></div>
+<script>
+    setInterval(updateView, 1000);
+    updateView();
+    function updateView(){
+        document.getElementById('app').innerHTML = /*HTML*/`
+        <div class="trafficlight">
+        <div class="blank" id="red"></div>
+        <div class="blank" id="yellow"></div>
+        <div class="blank" id="green"></div>
+        </div>
+        <button onclick="changeToRedColor()" class="buttonPlacement">change to red color</button>
+        <button onclick="changeToYellowColor()" class="buttonPlacement">change to yellow color</button>
+        <button onclick="changeToGreenColor()" class="buttonPlacement">change to green color</button>
+        `;
+        
+    }
+    setInterval(automaticTrafficlight, 15000)
+    function automaticTrafficlight(){
+        setTimeout(changeToRedColor,1000)
+        setTimeout(changeToYellowColor,6000)
+        setTimeout(changeToGreenColor,11000)
+    }
+    function changeToRedColor(color){
+        document.getElementById('red').style.backgroundColor = 'red'
+    }
+    function changeToYellowColor(color){
+        document.getElementById('yellow').style.backgroundColor = 'yellow'
+    }
+    function changeToGreenColor(color){
+        document.getElementById('green').style.backgroundColor = 'green'
+    }
+</script>
+</body>
+</html>
